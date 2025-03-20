@@ -10,6 +10,7 @@ const exampleData = [
         school: "NIT",
         job: "IT Specialist",
         alive: "true",
+        cardType: "rare",
         items: [
             { id: 10, name: "-M9" },
             { id: 11, name: "-Chaos" }
@@ -25,6 +26,7 @@ const exampleData = [
         school: "NIT",
         job: "Janitor",
         alive: "true",  
+        cardType:"free",
         items:[
             { id: 12, name: "-0$"},
             { id: 13, name: "-Financial Debt"}
@@ -40,6 +42,7 @@ const exampleData = [
         school: "NIT",
         job: "Ultimate Emo",
         alive: "true",
+        cardType:"epic",
         items:[
             { id: 14, name: "-Mullet"},
             { id: 15, name: "-Mustache"}
@@ -55,6 +58,7 @@ const exampleData = [
         school: "NIT",
         job: "Unemployed",
         alive: "true",
+        cardType:"legendary",
         items:[
             { id: 16, name: "-Glasses"},
             { id: 17, name: "-Perm"}
@@ -70,6 +74,7 @@ const exampleData = [
         school: "NIT",
         job: "IT Engineering",
         alive: "true",
+        cardType:"ultra common",
         items: [
             { id: 10, name: "-Eye Lens" },
             { id: 11, name: "-Wig" }
@@ -85,6 +90,7 @@ const exampleData = [
         school: "NIT",
         job: "Dropshipper",
         alive: "true",
+        cardType:"1 of 1",
         items:[
             { id: 12, name: "-Toilet Paper"},
             { id: 13, name: "-Phone"}
@@ -100,6 +106,7 @@ const exampleData = [
         school: "NIT",
         job: "Serial Killer",
         alive: "true",
+        cardType:"rare",
         items:[
             { id: 14, name: "-Mjolnir"},
             { id: 15, name: "-Atomic Bomb"}
@@ -115,6 +122,7 @@ const exampleData = [
         school: "NIT",
         job: "Professional Boxer",
         alive: "true",
+        cardType:"common",
         items:[
             { id: 16, name: "-Boxing Glove"},
             { id: 17, name: "-Boxing Shoes"}
@@ -130,6 +138,7 @@ const exampleData = [
         school: "NIT",
         job: "Unemployed",
         alive: "true",
+        cardType:"rare",
         items:[
             { id: 14, name: "-Dancing Kit"},
             { id: 15, name: "-Cheerleader Outfit"}
@@ -145,6 +154,7 @@ const exampleData = [
         school: "NIT",
         job: "Therapist",
         alive: "true",
+        cardType:"common",
         items:[
             { id: 16, name: "-Wig"},
             { id: 17, name: "-Glasses"}
@@ -160,6 +170,7 @@ const exampleData = [
         school: "NIT",
         job: "IT engineering",
         alive: "true",
+        cardType:"common",
         items:[
             { id: 16, name: "-CP"},
             { id: 17, name: "-Anime"}
@@ -175,6 +186,7 @@ const exampleData = [
         school: "NIT",
         job: "Trinity Killer",
         alive: "true",
+        cardType:"common",
         items:[
             { id: 16, name: "-Hairtie"},
             { id: 17, name: "-OldMoney"}
@@ -303,63 +315,67 @@ const exampleData = [
     },
 ]
 export default function Lab4() {
-        const [searchTerm, setSearchTerm] = useState("");
-        const [isRow, setIsRow] = useState(false);
-
-        const filteredData = exampleData.filter((person) =>
-          person.firstname.toLowerCase().includes(searchTerm.toLowerCase())
-        );
-        console.log(filteredData);
-        
-        return (
-          <div className="bg-gray-400 pt-10 min-h-screen px-4">
-            <h1 className="text-3xl font-bold text-center mb-6 text-gray-800">11c Students</h1>
-            <div className="flex justify-between items-center mb-6 max-w-5xl mx-auto">
-              <input
-                type="text"
-                placeholder="Search..."
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="px-4 py-2 w-full max-w-md rounded-lg border border-gray-800 bg-white text-gray-900 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500"
-              />
-              <button
-                onClick={() => setIsRow(!isRow)}
-                className="ml-4 px-4 py-2 bg-gray-800 text-white rounded-lg hover:scale-105 transition-transform duration-300 ease-in-out"
+    const [searchTerm, setSearchTerm] = useState("");
+    const [isRow, setIsRow] = useState(false);
+  
+    const filteredData = exampleData.filter((person) =>
+      person.firstname.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    console.log(filteredData);
+  
+    return (
+      <div className="bg-gray-400 pt-10 min-h-screen px-4">
+        <h1 className="text-3xl font-bold text-center mb-6 text-gray-800">11c Students</h1>
+        <div className="flex justify-between items-center mb-6 max-w-5xl mx-auto">
+          <input
+            type="text"
+            placeholder="Search..."
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="px-4 py-2 w-full max-w-md rounded-lg border border-gray-800 bg-white text-gray-900 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500"
+          />
+          <button
+            onClick={() => setIsRow(!isRow)}
+            className="ml-4 px-4 py-2 bg-gray-800 text-white rounded-lg hover:scale-105 transition-transform duration-300 ease-in-out"
+          >
+            Change Layout
+          </button>
+        </div>
+        <div className={`grid ${isRow ? 'grid-cols-1' : 'lg:grid-cols-5 md:grid-cols-2 sm:grid-cols-1'} gap-10 justify-items-center`}>
+          {filteredData.length > 0 ? (
+            filteredData.map((element) => (
+              <div
+                key={element.id}
+                className={`flex flex-col items-center p-6 bg-gray-500 rounded-2xl border border-gray-800 hover:scale-105 transition-transform duration-300 ease-in-out shadow-xl shadow-black ${isRow ? "flex-row w-full max-w-5xl p-4": "m-5"}`}
               >
-                Change Layout
-              </button>
-            </div>
-            <div className={`grid ${isRow ? 'grid-cols-1' : 'lg:grid-cols-5 md:grid-cols-2 sm:grid-cols-1'} gap-10 justify-items-center`}>
-              {filteredData.length > 0 ? (
-                filteredData.map((element) => (
-                  <div
-                    key={element.id}
-                    className={`flex flex-col items-center p-6 bg-gray-500 rounded-2xl border border-gray-800 hover:scale-105 transition-transform duration-300 ease-in-out shadow-xl shadow-black ${isRow ? "w-screen max-w-4xl": "m-5"}`}
-                  >
-                    <img
-                      src={element.image}
-                      alt={element.firstname}
-                      className="rounded-lg w-40 h-40 object-cover"
-                    />
-                    <div className="text-center mt-2">
-                      <p className="text-lg font-bold text-black">{element.firstname} {element.lastname}</p>
-                      <p className="text-white">{element.job}</p>
-                      <p className="text-gray-900">School: {element.school}</p>
-                      <p className="text-gray-900">Height: {element.height}</p>
-                      <div>
-                        <p className="text-gray-700">ITEMS:</p>
-                        <ul className="text-gray-700">
-                          {element.items.map((item) => (
-                            <p key={item.id}>{item.name}</p>
-                          ))}
-                        </ul>
-                      </div>
+                <div className={`flex ${isRow ? 'flex-row' : 'flex-col'} items-center`}>
+                  <img
+                    src={element.image}
+                    alt={element.firstname}
+                    className="rounded-lg w-40 h-40 object-cover mr-4 mb-4"
+                  />
+                  <div className="text-center mt-2">
+                    <p className="text-lg font-bold text-black">{element.firstname} {element.lastname}</p>
+                    <p className="text-white">{element.job}</p>
+                    <p className="text-gray-900">School: {element.school}</p>
+                    <p className="text-gray-900">Height: {element.height}</p>
+                    <p className="text-gray-900">Card Type: {element.cardType}</p>
+                    <div>
+                      <p className="text-gray-700">ITEMS:</p>
+                      <ul className="text-gray-700">
+                        {element.items.map((item) => (
+                          <p key={item.id}>{item.name}</p>
+                        ))}
+                      </ul>
                     </div>
                   </div>
-                ))
-              ) : (
-                <p className="text-center text-gray-900 col-span-4 text-lg">No results found.</p>
-              )}
-            </div>
-          </div>
-        );
-      }
+                </div>
+              </div>
+            ))
+          ) : (
+            <p className="text-center text-gray-900 col-span-4 text-lg">No results found.</p>
+          )}
+        </div>
+      </div>
+    );
+  }
+  
