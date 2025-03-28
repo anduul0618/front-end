@@ -1,8 +1,15 @@
 import React, { useState } from "react";
-
+import { useRouter } from "next/router";
 export default function Home() {
   const [color, setColor] = useState("black");
+  const router = useRouter();
   return (
+    <div>
+      <button
+        className="absolute top-6 right-6 font-bold text-xl bg-[rgb(100,100,100)] text-[rgb(255,255,255)] px-6 py-2 rounded-lg shadow-md hover:bg-[rgb(102,102,102)] transition"
+        onClick={() => router.push("/")}>
+        Back
+      </button>
     <div className={`flex h-screen w-screen bg-${color}-800`}>
       {color == "red" ? (
         <><button
@@ -52,6 +59,7 @@ export default function Home() {
               Цэнхэр
             </button></>
       )}
+    </div>
     </div>
   );
 }
