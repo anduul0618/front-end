@@ -325,12 +325,12 @@ const router = useRouter();
     console.log(filteredData);
   
     return (
-        <div>
+        <div className="bg-gray-600">
         <button
-          className="absolute top-6 right-6 font-bold text-xl bg-[rgb(100,100,100)] text-[rgb(255,255,255)] px-6 py-2 rounded-lg shadow-md hover:bg-[rgb(102,102,102)] transition"
-          onClick={() => router.push("/")}>
-          Back
-        </button>
+    className="absolute top-6 right-6 font-bold text-xl bg-[rgb(0,0,0)] text-[rgb(255,255,255)] px-6 py-2 rounded-lg shadow-md hover:bg-[rgb(102,102,102)] transition"
+    onClick={() => router.push("/")}>
+    Back
+  </button>
       <div className="bg-gray-400 pt-10 min-h-screen px-4">
         <h1 className="text-3xl font-bold text-center mb-6 text-gray-800">11c Students</h1>
         <div className="flex justify-between items-center mb-6 max-w-5xl mx-auto">
