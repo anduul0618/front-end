@@ -318,20 +318,25 @@ const exampleData = [
 export default function Lab4() {
     const [searchTerm, setSearchTerm] = useState("");
     const [isRow, setIsRow] = useState(false);
-const router = useRouter();
+    const router = useRouter();
     const filteredData = exampleData.filter((person) =>
       person.firstname.toLowerCase().includes(searchTerm.toLowerCase())
     );
     console.log(filteredData);
-  
+
     return (
-        <div className="bg-gray-600">
-        <button
-    className="absolute top-6 right-6 font-bold text-xl bg-[rgb(0,0,0)] text-[rgb(255,255,255)] px-6 py-2 rounded-lg shadow-md hover:bg-[rgb(102,102,102)] transition"
-    onClick={() => router.push("/")}>
-    Back
-  </button>
-      <div className="bg-gray-400 pt-10 min-h-screen px-4">
+        <div
+          className="min-h-screen w-full flex flex-col justify-center items-center bg-cover bg-center bg-fixed relative text-white"
+          style={{ backgroundImage: "url('/nestlogo.jpg')", backgroundAttachment: "fixed" }}
+        >
+      <button
+        className="absolute top-6 right-6 font-bold text-xl bg-gray-800 text-white px-6 py-2 rounded-lg shadow-md 
+                   hover:bg-gray-600 transition transform hover:scale-105"
+        onClick={() => router.push("/")}
+      >
+        Back
+      </button>
+      <div className="pt-10 min-h-screen px-4 bg-transparent backdrop-blur-sm">
         <h1 className="text-3xl font-bold text-center mb-6 text-gray-800">11c Students</h1>
         <div className="flex justify-between items-center mb-6 max-w-5xl mx-auto">
           <input
@@ -342,7 +347,8 @@ const router = useRouter();
           />
           <button
             onClick={() => setIsRow(!isRow)}
-            className="ml-4 px-4 py-2 bg-gray-800 text-white rounded-lg hover:scale-105 transition-transform duration-300 ease-in-out"
+            className="ml-4 px-4 py-2 bg-gray-800 text-white text-xl rounded-lg shadow-md 
+                   hover:bg-gray-600 transition transform hover:scale-105"
           >
             Change Layout
           </button>
@@ -352,7 +358,7 @@ const router = useRouter();
             filteredData.map((element) => (
               <div
                 key={element.id}
-                className={`flex flex-col items-center p-6 bg-gray-500 rounded-2xl border border-gray-800 hover:scale-105 transition-transform duration-300 ease-in-out shadow-xl shadow-black ${isRow ? "flex-row w-full max-w-5xl p-4": "m-5"}`}
+                className={`flex flex-col items-center p-6 bg-gray-800 bg-opacity-70 rounded-2xl border border-gray-800 hover:scale-105 transition-transform duration-300 ease-in-out shadow-xl shadow-black ${isRow ? "flex-row w-full max-w-5xl p-4": "m-5"}`}
               >
                 <div className={`flex ${isRow ? 'flex-row' : 'flex-col'} items-center`}>
                   <img
@@ -361,14 +367,14 @@ const router = useRouter();
                     className="rounded-lg w-40 h-40 object-cover mr-4 mb-4"
                   />
                   <div className="text-center mt-2">
-                    <p className="text-lg font-bold text-black">{element.firstname} {element.lastname}</p>
+                    <p className="text-lg font-bold text-white">{element.firstname} {element.lastname}</p>
                     <p className="text-white">{element.job}</p>
-                    <p className="text-gray-900">School: {element.school}</p>
-                    <p className="text-gray-900">Height: {element.height}</p>
-                    <p className="text-gray-900">Card Type: {element.cardType}</p>
+                    <p className="text-gray-300">School: {element.school}</p>
+                    <p className="text-gray-300">Height: {element.height}</p>
+                    <p className="text-gray-300">Card Type: {element.cardType}</p>
                     <div>
-                      <p className="text-gray-700">ITEMS:</p>
-                      <ul className="text-gray-700">
+                      <p className="text-gray-300">ITEMS:</p>
+                      <ul className="text-gray-300">
                         {element.items.map((item) => (
                           <p key={item.id}>{item.name}</p>
                         ))}
@@ -385,5 +391,4 @@ const router = useRouter();
       </div>
       </div>
     );
-  }
-  
+}
