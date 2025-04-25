@@ -1,166 +1,201 @@
 "use client";
 
+import React, { useState } from "react";
 import { useRouter } from 'next/navigation';
 
 const data = [
-  {
-    id: 1,
-    name: "Iphone 13 pro max",
-    color: "gray",
-    price: 2000000,
-    image:
-      "https://istorepreowned.co.za/cdn/shop/products/iPhone_13_Pro_Blue.png?v=1710874242",
-    item: [
-      {
-        id: 10,
-        name: "case",
-        price: 50000,
-      },
-      {
-        id: 11,
-        name: "adapter",
-        price: 100000,
-      },
-    ],
-  },
-  {
-    id: 2,
-    name: "Iphone 12 pro max",
-    color: "blue",
-    price: 1500000,
-    image:
-      "https://ola.tech/wp-content/uploads/iphone-12-pro-max-graphite.webp",
-    item: [
-      {
-        id: 12,
-        name: "case",
-        price: 100000,
-      },
-      {
-        id: 13,
-        name: "adapter",
-        price: 200000,
-      },
-    ],
-  },
-  {
-    id: 3,
-    name: "Iphone 12 pro",
-    color: "brown",
-    price: 1700000,
-    image:
-      "https://ola.tech/wp-content/uploads/iphone-12-pro-max-graphite.webp",
-    item: [
-      {
-        id: 14,
-        name: "case",
-        price: 1000000,
-      },
-      {
-        id: 15,
-        name: "case",
-        price: 1000009,
-      },
-    ],
-  },
-  {
-    id: 4,
-    name: "Iphone 13 pro",
-    color: "white",
-    price: 2500000,
-    image:
-      "https://ola.tech/wp-content/uploads/iphone-12-pro-max-graphite.webp",
-    item: [
-      {
-        id: 16,
-        name: "case",
-        price: 3000089,
-      },
-      {
-        id: 17,
-        name: "adapter",
-        price: 3993408,
-      },
-    ],
-  },
-  {
-    id: 5,
-    name: "Iphone 16 pro",
-    color: "sky blue",
-    price: 2500000,
-    image:
-      "https://istorepreowned.co.za/cdn/shop/products/iPhone_13_Pro_Blue.png?v=1710874242",
-    item: [
-      {
-        id: 18,
-        name: "case",
-        price: 3000089,
-      },
-      {
-        id: 19,
-        name: "adapter",
-        price: 3993408,
-      },
-    ],
-  },
+    {
+        id: 1,
+        name: "Reaver Vandal",
+        color: "Blue",
+        price: "1750vp",
+        image:
+            "https://valorantinfo.gg/wp-content/uploads/2021/10/valorant-reaver-vandal-skin-red-variant-300x91.png",
+        item: [
+            {
+                id: 10,
+                name: "Reaver Buddy",
+                price: "750vp",
+            },
+            {
+                id: 11,
+                name: "Color Variant",
+                price: "100vp",
+            },
+        ],
+    },
+    {
+        id: 2,
+        name: "Chaos Vandal",
+        color: "Black",
+        price: "2250vp",
+        image:
+            "https://s-valorant-api.op.gg/Assets/WeaponSkins/10FF3757-4099-F828-D391-E28D2E634924.png?image=q_auto:good,f_png,h_184&v=3904749568",
+        item: [
+            {
+                id: 12,
+                name: "Chaos Buddy",
+                price: "750vp",
+            },
+            {
+                id: 13,
+                name: "Color Variant",
+                price: "100vp",
+            },
+        ],
+    },
+    {
+        id: 3,
+        name: "Forsaken Operator",
+        color: "Yellow",
+        price: "1750vp",
+        image:
+            "https://valorantinfo.gg/wp-content/uploads/2021/10/valorant-forsaken-operator-skin-sovereign-variant-300x63.png",
+        item: [
+            {
+                id: 14,
+                name: "Forsaken Buddy",
+                price: "750vp",
+            },
+            {
+                id: 15,
+                name: "Color Variant",
+                price: "150vp",
+            },
+        ],
+    },
+    {
+        id: 4,
+        name: "Ruination Phantom",
+        color: "Green",
+        price: "2250vp",
+        image:
+            "https://tse1.mm.bing.net/th/id/OIP.PAzf47dNCPl6DV4F9CuYawHaBr?rs=1&pid=ImgDetMain",
+        item: [
+            {
+                id: 16,
+                name: "Ruination Buddy",
+                price: "750vp",
+            },
+            {
+                id: 17,
+                name: "Color Variant",
+                price: "150vp",
+            },
+        ],
+    },
+    {
+        id: 5,
+        name: "Singularity Sheriff",
+        color: "Dark Blue",
+        price: "2250vp",
+        image:
+            "https://esports.as.com/2020/10/09/valorant/nueva-linea-aspectos-Singularity-VALORANT_1399370122_514432_1024x478.png",
+        item: [
+            {
+                id: 18,
+                name: "Singularity Buddy",
+                price: "750vp",
+            },
+            {
+                id: 19,
+                name: "Color Variant",
+                price: "White",
+            },
+        ],
+    },
 ];
 
 export default function Lab1() {
-  const router = useRouter();
-  return (
-    <div className="flex gap-x-8 p-6 bg-gray-300 w-full h-screen">
-      <div className="w-[20%] bg-gray-100 h-[90vh] rounded-xl flex flex-col items-center">
-        <img
-          src="https://nhs.edu.mn/favicon.ico"
-          alt="image description"
-          className="mt-6 w-44 h-44"
-        />
-        <h1 className="text-black mt-12 text-2xl">Anduul</h1>
-        <h2 className="text-blue-600 mt-7">Nest Education IT School</h2>
-        <p className="text-black mt-6">lab1</p>
-        <p className="text-black mt-6">lab2</p>
-        <p className="text-black mt-6">lab3</p>
-      </div>
+    const router = useRouter();
+    const [searchTerm, setSearchTerm] = useState("");
 
-      <div className="w-[75%] bg-gray-100 h-[90vh] rounded-xl p-6 flex flex-col gap-y-12">
-        <div className="flex gap-x-12">
-          <div className="items-center flex justify-center h-[50px] w-[220px] bg-gray-800 rounded-xl text-white">
-            Харилцагчид
-          </div>
-          <input
-            type="text"
-            placeholder="Enter name..."
-            className="bg-white border-2 shadow-xl shadow-blue rounded-xl px-5 py-3 text-black cursor-pointer h-[50px] w-[480px]"
-          />
-          <div className="border border-2 border-yellow-400 bg-yellow-200 h-[50px] w-[50px] rounded-xl"></div>
-          <div className="bg-yellow-700 items-center justify-center h-[50px] w-[380px] rounded-xl flex text-white">
-            Харилцагчид бүртгэх
-          </div>
-        </div>
-        <div className="bg-gray-800 flex flex-col gap-6 p-4 rounded-xl overflow-y-auto">
-          <div className="p-5 flex flex-col gap-6">
-            {data.map((item, index) => (
-              <div
-                key={index}
-                className="text-black w-full bg-white rounded-xl p-6 flex flex-wrap justify-between items-center"
-              >
-                <div className="border border-yellow-300 h-[20px] w-[20px]"></div>
-                <div className="min-w-[120px]">{item.name}</div>
-                <div className="min-w-[120px]">{item.price}</div>
-                <div className="min-w-[120px]">{item.color}</div>
+    const filteredData = data.filter((person) =>
+        person.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    return (
+        <div className="flex gap-x-8 p-6 bg-gray-300 w-full h-screen">
+            <div className="w-[25%] bg-gray-100 h-[90vh] rounded-xl flex flex-col items-center">
                 <img
-                  src={item.image}
-                  className="object-cover h-[55px] w-[55px]"
+                    src="https://nhs.edu.mn/favicon.ico"
+                    alt="image description"
+                    className="mt-6 w-44 h-44"
                 />
-                <div className="flex gap-x-6">
-                  <div className="h-[30px] w-[30px] rounded-sm bg-yellow-400"></div>
-                  <div className="h-[30px] w-[30px] rounded-sm bg-red-400"></div>
+                <h1 className="text-black mt-12 text-2xl">Anduul</h1>
+                <h2 className="text-purple-600 mt-7 text-xl">Nest Education IT School</h2>
+                <p className="text-black mt-10">Hiceel 1</p>
+                <p className="text-black mt-10">Hiceel 2</p>
+                <p className="text-black mt-10">Hiceel 3</p>
+            </div>
+
+            <div className="w-[75%] bg-gray-100 h-[90vh] rounded-xl p-6 flex flex-col gap-y-12">
+                <div className="flex gap-x-12">
+                    <div className="items-center flex justify-center h-[50px] w-[200px] bg-gray-600 rounded-xl text-white">
+                        Hariltsagcid
+                    </div>
+                    <input
+                        type="text"
+                        placeholder="Search."
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                        className="bg-white border-2 shadow-xl shadow-blue rounded-xl px-5 py-3 text-black cursor-pointer h-[50px] w-[480px]"
+                    />
+                    <div className="bg-gray-600 items-center justify-center h-[50px] w-[350px] rounded-xl flex text-white">
+                        Hariltsagcid burtgeh
+                    </div>
                 </div>
-              </div>
-            ))}
-          </div>
+                <div className="bg-gray-400 flex flex-col gap-5 p-4 rounded-xl">
+                    <div className="p-5 flex flex-col gap-6">
+                        {filteredData.length > 0 ? (
+                            filteredData.map((item, index) => (
+                                <div
+                                    key={item.id || index}
+                                    className="text-black w-full bg-white rounded-xl p-6 flex flex-wrap justify-between items-center"
+                                >
+                                    <div className="border border-yellow-300 h-[20px] w-[20px]"></div>
+                                    <div className="min-w-[120px]">{item.name}</div>
+                                    <div className="min-w-[120px]">{item.price}</div>
+                                    <div className="min-w-[120px]">{item.color}</div>
+                                    <div className="flex flex-col">
+                                        {item.items?.map((subItem, subIndex) => (
+                                            <p key={subIndex} className="text-gray-600">{subItem.name}</p>
+                                        ))}
+                                    </div>
+                                    <div className="flex flex-col">
+                                        {item.items?.map((subItem, subIndex) => (
+                                            <p key={subIndex} className="text-gray-600">{subItem.price}</p>
+                                        ))}
+                                    </div>
+                                    <img
+                                        src={item.image}
+                                        className="object-fit h-[50px] w-[170px]"
+                                        alt={item.name}
+                                    />
+                                    <div className="flex gap-x-6">
+                                        <div className="h-[30px] w-[30px] rounded-lg bg-yellow-200 flex justify-center items-center">
+                                            <img
+                                                src="https://cdn1.iconfinder.com/data/icons/materia-video-games/24/003_003_eye_watch_view_views-4096.png"
+                                                className="object-fit h-[25px] w-[25px]"
+                                                alt="view"
+                                            />
+                                        </div>
+                                        <div className="h-[30px] w-[30px] rounded-lg bg-red-600 flex justify-center items-center">
+                                            <img
+                                                src="https://static-00.iconduck.com/assets.00/delete-icon-1864x2048-bp2i0gor.png"
+                                                className="object-fit h-[20px] w-[15px]"
+                                                alt="delete"
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                            ))
+                        ) : (
+                            <p className="text-center text-gray-900 col-span-4 text-lg">No results found.</p>
+                        )}
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 }
+
